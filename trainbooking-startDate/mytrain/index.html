@@ -12,7 +12,7 @@
     <link href="css/freelancer.css" rel="stylesheet">
 </head>
 
-<body id="page-top" class="index">
+<body id="page-top" class="index" onload="getFutureDate()">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button> -->
-                <a class="navbar-brand" href="#page-top">Indian Railways</a>
+                <a class="navbar-brand" href="#page-top">Indian Railways - Advance booking details</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <!-- /.navbar-collapse -->
@@ -42,29 +42,45 @@
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2 qaBox">
                     <p class="questions">How many days before can I book a train ticket?</p>
-                    <p class="answers"> 120 days </p>
+                    <p class="answers"> 120 days. You can book the train ticket for the date - <span id="futureDate"></span>(dd/mm/yyyy)</p>
                 </div>
                 <div class="col-lg-4 qaBox">
                     <p class="questions">How many days before can I book a tatkal ticket?</p>
                     <p class="answers">1 day before.
-                    <ul>
-                    <li> AC class booking starts from 10 AM </li>
-                    <li> Non-AC class from 11 AM </li></p>
+                        <ul>
+                            <li> AC class booking starts from 10 AM </li>
+                            <li> Non-AC class from 11 AM </li>
+                    </p>
                 </div>
             </div>
-</section>
+    </section>
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-below">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; C&N 2015
+                        Copyright &copy; C&N 2016
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 </body>
+<script>
+function getFutureDate() {
+    var someFormattedDate, currentDate, addDays, dd, mm, y;
+    currentDate = new Date();
+    addDays = 120;
+    currentDate.setDate(currentDate.getDate() + addDays);
+    dd = currentDate.getDate();
+    mm = currentDate.getMonth() + 1;
+    y = currentDate.getFullYear();
+
+    someFormattedDate = dd + '/' + mm + '/' + y;
+
+    document.getElementById("futureDate").innerHTML = someFormattedDate;
+}
+</script>
 
 </html>
