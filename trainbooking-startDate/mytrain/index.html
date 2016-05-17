@@ -42,7 +42,8 @@
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2 qaBox">
                     <p class="questions">How many days before can I book a train ticket?</p>
-                    <p class="answers"> 120 days. You can book the train ticket for the date - <span id="futureDate"></span>(dd/mm/yyyy)</p>
+                    <p class="answers"> 120 days. Now, you can book the train ticket for the date:
+                        <span id="futureDate" class="specialText"></span> <span class="smallFont" "">(dd/mm/yyyy)</span> i.e <span id="futureDay" class="specialText"></span>, <span id="futureMonth" class="specialText"></span> <span id="futureSpecificDate" class="specialText"></span> of <span id="futureYear" class="specialText"></span> </p>
                 </div>
                 <div class="col-lg-4 qaBox">
                     <p class="questions">How many days before can I book a tatkal ticket?</p>
@@ -50,8 +51,15 @@
                         <ul>
                             <li> AC class booking starts from 10 AM </li>
                             <li> Non-AC class from 11 AM </li>
+                        </ul>
                     </p>
                 </div>
+                <!-- <div class="col-lg-4 qaBox">
+                    <p class="questions">Planning for some specific Date?</p>
+                    <p class="answers">
+                        <input type="date" name="planDate" />
+                    </p>
+                </div> -->
             </div>
     </section>
     <!-- Footer -->
@@ -69,7 +77,7 @@
 </body>
 <script>
 function getFutureDate() {
-    var someFormattedDate, currentDate, addDays, dd, mm, y;
+    var someFormattedDate, currentDate, addDays, dd, mm, y, weekday, month;
     currentDate = new Date();
     addDays = 120;
     currentDate.setDate(currentDate.getDate() + addDays);
@@ -79,6 +87,12 @@ function getFutureDate() {
 
     someFormattedDate = dd + '/' + mm + '/' + y;
 
+    weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.getElementById("futureDay").innerHTML = weekday[currentDate.getDay()];
+    document.getElementById("futureMonth").innerHTML = month[currentDate.getMonth()];
+    document.getElementById("futureSpecificDate").innerHTML = dd;
+    document.getElementById("futureYear").innerHTML = y;
     document.getElementById("futureDate").innerHTML = someFormattedDate;
 }
 </script>
